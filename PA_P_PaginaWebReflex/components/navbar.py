@@ -1,64 +1,50 @@
 import reflex as rx
 
 def nvbar_component() -> rx.Component:
-    return rx.container(
-            rx.box(                      
-                rx.desktop_only(
-                    rx.hstack(
-                        rx.hstack(
-                            rx.image(
-                                src="/logo.jpg",
-                                width="2.25em",
-                                height="auto",
-                                border_radius="25%",
-                            ),
-                            rx.heading(
-                                "Reflex", size="7", weight="bold"
-                            ),
-                            align_items="center",
-                        ),
-                        rx.input(
-                            rx.input.slot(rx.icon("search")),
-                            placeholder="Search...",
-                            type="search",
-                            size="2",
-                            justify="end",
-                        ),
-                        justify="between",
-                        align_items="center",
-                    ),
+    return rx.box(
+        rx.flex(
+            rx.hstack(
+                rx.image(
+                    src="/logo.jpg",
+                    w="2em",                # mismo ancho en todo lado
+                    h="auto",
+                    border_radius="25%"
                 ),
-                rx.mobile_and_tablet(
-                    rx.hstack(
-                        rx.hstack(
-                            rx.image(
-                                src="/logo.jpg",
-                                width="2em",
-                                height="auto",
-                                border_radius="25%",
-                            ),
-                            rx.heading(
-                                "Reflex", size="6", weight="bold"
-                            ),
-                            align_items="center",
-                        ),
-                        rx.input(
-                            rx.input.slot(rx.icon("search")),
-                            placeholder="Search...",
-                            type="search",
-                            size="2",
-                            justify="end",
-                        ),
-                        justify="between",
-                        align_items="center",
-                    ),
+                rx.heading(
+                    "Reflex",
+                    # Variante responsiva: 6 en móvil, 7 desde md (≥ 62 em)
+                    size=rx.breakpoints(initial="6", md="7"),
+                    weight="bold",
                 ),
-                bg=rx.color("accent", 3),
-                padding="1em",
-                # position="fixed",
-                # top="0px",
-                # z_index="5",
-                width="100vw",
-            )
-            
-)
+                spacing="2",
+                align="center",
+            ),
+            # --- Buscador ---
+             rx.input(
+                rx.input.slot(rx.icon("search")),
+                placeholder="Search…",
+                type="search",
+                size="2",
+                # ancho 60 % en móvil, 18 em en desktop
+                w=rx.breakpoints(initial="60%", md="18em"),
+                max_w="20em",
+            ),
+            justify="between",
+            align="center",
+            w="full",
+        ),
+
+        # Estilo del navbar
+        bg=rx.color("accent", 3),
+        padding_x = '2em', # padding left-right (eje x)            
+        padding_y="0.7em", # padding top-bottom (altura de navbar eje y)
+        shadow="md",
+
+        # Fijar arriba
+        position="fixed",
+        top="0",
+        left="0",
+        right="0",
+        z_index="5",
+    
+    )
