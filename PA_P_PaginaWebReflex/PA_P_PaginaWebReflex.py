@@ -11,4 +11,4 @@ app = rx.App() # init de la app
 
 
 # -------------------------------- LLAMADA A LAS PAGINAS  --------------------------------#
-app.add_page(index_page, route="/Index", title='Index Page')
+app.add_page(index_page, route="/index", title='Index Page')
