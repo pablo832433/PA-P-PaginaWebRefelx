@@ -6,9 +6,10 @@ from PA_P_PaginaWebReflex.components.navbar import nvbar_component
 
 def index_page():
     return background_component(
-        background_component(),
-        nvbar_component()
-        
+        rx.vstack(
+            nvbar_component(),
+            background_component()
+        )
     )
 
 
