@@ -1,5 +1,3 @@
-"""Welcome to Reflex! This file outlines the steps to create a basic app."""
-
 import reflex as rx
 from rxconfig import config
 from .pages.index import index_page
@@ -7,7 +5,14 @@ from .pages.index import index_page
 
 
 # -------------------------------- INICIALIZACION DE LA APLICACION --------------------------------#
-app = rx.App() # init de la app 
+app = rx.App(
+        theme=rx.theme(
+        appearance="dark",
+        has_background=True,
+        radius="large",
+        accent_color="teal",
+    )
+) # init de la app 
 
 
 # -------------------------------- LLAMADA A LAS PAGINAS  --------------------------------#
